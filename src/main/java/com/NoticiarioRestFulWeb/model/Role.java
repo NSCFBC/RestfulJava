@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +24,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "role")
 @Entity
-public class Role implements Serializable {
+public class Role implements Serializable, GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -31,5 +33,9 @@ public class Role implements Serializable {
 	@EqualsAndHashCode.Include
 	private Long id;
 	private String role;
+	@Override
+	public String getAuthority() {
+		return role;
+	}
 
 }
