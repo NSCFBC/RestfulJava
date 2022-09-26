@@ -21,12 +21,12 @@ import com.NoticiarioRestFulWeb.service.UsuarioService;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping(value = "/usuarios")
 public class UsuarioController {
 
-	private final UsuarioService usuarioService;
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@GetMapping(value = "/")
 	public ResponseEntity<List<UsuarioDTO>> findAll() {

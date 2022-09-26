@@ -43,6 +43,7 @@ public class Usuario implements Serializable, UserDetails {
 	private String email;
 	private String nome;
 	private String senha;
+	private String token;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_role",
