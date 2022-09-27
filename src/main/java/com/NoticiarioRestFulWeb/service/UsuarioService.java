@@ -3,7 +3,6 @@ package com.NoticiarioRestFulWeb.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,9 +43,8 @@ public class UsuarioService implements UserDetailsService{
 	}
 
 	public UsuarioDTO findById(Long id) {
-		Optional<Usuario> usuario = usuarioRepository.findById(id);
-		return usuario.map(user -> new UsuarioDTO(user))
-				.orElseThrow(() -> new NoSuchElementException("Erro ao buscar usuário informado"));
+		return usuarioRepository.findById(id).map(data -> new UsuarioDTO(data))
+				.orElseThrow(() -> new NoSuchElementException("Não existe dado com esse valor informado"));
 	}
 
 	public Page<UsuarioDTO> paginacao(Pageable pageable) {

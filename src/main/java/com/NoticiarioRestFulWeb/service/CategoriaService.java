@@ -2,15 +2,18 @@ package com.NoticiarioRestFulWeb.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.NoticiarioRestFulWeb.dto.CategoriaDTO;
+import com.NoticiarioRestFulWeb.exception.DataBaseException;
 import com.NoticiarioRestFulWeb.model.Categoria;
 import com.NoticiarioRestFulWeb.repository.CategoriaRepository;
 
@@ -31,8 +34,8 @@ public class CategoriaService {
 	}
 
 	public CategoriaDTO findById(Long id) {
-		Optional<Categoria> categoriaDTO = categoriaRepository.findById(id);
-		return new CategoriaDTO(categoriaDTO.get());
+		return categoriaRepository.findById(id).map(data -> new CategoriaDTO(data))
+				.orElseThrow(() -> new NoSuchElementException("Não existe dado com esse valor informado"));
 	}
 
 	public Page<CategoriaDTO> paginacao(Pageable pageable) {
@@ -44,7 +47,13 @@ public class CategoriaService {
 	}
 
 	public void delete(Long id) {
-		categoriaRepository.deleteById(id);
+		try {
+			categoriaRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataBaseException("Violação referencial ao excluir dados");
+		} catch (EmptyResultDataAccessException e) {
+			throw new DataBaseException("Não há dados para serem excluidos");
+		}
 	}
 
 
