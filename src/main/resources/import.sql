@@ -6,6 +6,13 @@ INSERT INTO usuario(id, email, nome, senha) VALUES (5, 'Fabricio@gmail.com', 'Fa
 INSERT INTO usuario(id, email, nome, senha) VALUES (6, 'Luiza@gmail.com', 'Luiza', 'da231das');
 INSERT INTO usuario(id, email, nome, senha) VALUES (7, 'Marcos@gmail.com', 'Marcos', '232dasew');
 
+
+INSERT INTO categoria(id, nome)VALUES (1, 'Esporte');
+INSERT INTO categoria(id, nome)VALUES (2, 'Saude');
+INSERT INTO categoria(id, nome)VALUES (3, 'Educacao');
+INSERT INTO categoria(id, nome)VALUES (4, 'Lazer');
+INSERT INTO categoria(id, nome)VALUES (5, 'Passeio');
+
 INSERT INTO role(id, role) VALUES (1,'ROLE_OPERATOR');
 INSERT INTO role(id, role)VALUES (2,'ROLE_ADMIN');
 INSERT INTO role(id, role)VALUES (3,'ROLE_SECRETARIO');

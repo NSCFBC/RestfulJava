@@ -19,8 +19,6 @@ import com.NoticiarioRestFulWeb.dto.UsuarioDTO;
 import com.NoticiarioRestFulWeb.model.Usuario;
 import com.NoticiarioRestFulWeb.service.UsuarioService;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequestMapping(value = "/usuarios")
 public class UsuarioController {
