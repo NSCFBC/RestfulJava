@@ -36,8 +36,8 @@ public class Usuario implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
-	@SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario", allocationSize = 70, initialValue = 100)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usu")
+	@SequenceGenerator(name = "seq_usu", sequenceName = "seq_usu", allocationSize = 70, initialValue = 100)
 	@EqualsAndHashCode.Include
 	private Long id;
 	private String email;

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NoticiarioRestFulWebApplication {
 
 	public static void main(String[] args) {
+//		System.out.println(BCryptComponent.getEncode().encode("1234"));
 		SpringApplication.run(NoticiarioRestFulWebApplication.class, args);
 	}
 
