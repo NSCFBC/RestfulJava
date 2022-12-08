@@ -24,7 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UsuarioService implementacaoUserDetailsSercice;
 	
-	
 	/*Configura as solicitações de acesso por Http*/
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -36,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.disable().authorizeRequests().antMatchers("/").permitAll()
 		.antMatchers("/index").permitAll()
 		.antMatchers("/usuarios/**").permitAll()
+		.antMatchers("/noticias/**").permitAll()
 		.antMatchers("/categorias/**").permitAll()
 //		.antMatchers("/categorias/").hasRole("OPERATOR")
 //		.antMatchers("/**").permitAll()
